@@ -174,7 +174,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess, onUploadErro
     // IMPORTANT: Replace 'localhost' with your actual local network IP for the phone to access it!
     // You can find your IP using `ipconfig` (Windows) or `ifconfig` (macOS/Linux)
     // Or instruct the user to ensure phone is on the same Wi-Fi and use the displayed IP.
-    const qrCodeUrl = phoneUploadId ? `${window.location.protocol}//${window.location.hostname}:3000/phone-upload/${phoneUploadId}` : '';
+    const qrCodeUrl = phoneUploadId ? `${window.location.protocol}//<YOUR_LAPTOP_IP>:3000/phone-upload/${phoneUploadId}` : '';
     const potentialIpUrl = phoneUploadId ? `${window.location.protocol}//<YOUR_LAPTOP_IP>:3000/phone-upload/${phoneUploadId}` : '';
 
     return (

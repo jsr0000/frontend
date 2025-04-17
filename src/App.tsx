@@ -113,14 +113,16 @@ function MainApp() {
               selectedItemId={selectedFurnitureItem?.id ?? null}
               onSelectItem={handleSelectItem}
             />
-            <EditorUI
+            {/* <EditorUI
               placedItems={placedFurniture}
               selectedItem={selectedFurnitureItem}
               onSelectItem={(item) => handleSelectItem(item?.id ?? null)}
               onRemoveItem={handleRemoveFurniture}
               onSaveLayout={handleSaveLayout}
             />
-            <FurnitureCatalog onSelectFurniture={handleSelectFurniture} />
+            <FurnitureCatalog onSelectFurniture={handleSelectFurniture} /> */}
+            {/* End Temporarily Disabled Furniture UI */}
+
             <button onClick={handleStartDesigning} style={{ marginTop: '20px' }}>Start New Design</button>
           </div>
         )}

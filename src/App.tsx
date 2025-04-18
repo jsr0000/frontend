@@ -89,7 +89,7 @@ function MainApp() {
         <h1>AI Interior Designer</h1>
       </header>
       <main>
-        {error && <p className="error-message"><strong>Error:</strong> {error}</p>}
+        {error && <p style={{ color: 'red' }}><strong>Error:</strong> {error}</p>}
 
         {appState === 'landing' && (
           <LandingPage onStartDesigning={handleStartDesigning} />
@@ -113,16 +113,14 @@ function MainApp() {
               selectedItemId={selectedFurnitureItem?.id ?? null}
               onSelectItem={handleSelectItem}
             />
-            {/* <EditorUI
+            <EditorUI
               placedItems={placedFurniture}
               selectedItem={selectedFurnitureItem}
               onSelectItem={(item) => handleSelectItem(item?.id ?? null)}
               onRemoveItem={handleRemoveFurniture}
               onSaveLayout={handleSaveLayout}
             />
-            <FurnitureCatalog onSelectFurniture={handleSelectFurniture} /> */}
-            {/* End Temporarily Disabled Furniture UI */}
-
+            <FurnitureCatalog onSelectFurniture={handleSelectFurniture} />
             <button onClick={handleStartDesigning} style={{ marginTop: '20px' }}>Start New Design</button>
           </div>
         )}

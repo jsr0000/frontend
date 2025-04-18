@@ -174,57 +174,56 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess, onUploadErro
     // IMPORTANT: Replace 'localhost' with your actual local network IP for the phone to access it!
     // You can find your IP using `ipconfig` (Windows) or `ifconfig` (macOS/Linux)
     // Or instruct the user to ensure phone is on the same Wi-Fi and use the displayed IP.
-    const qrCodeUrl = phoneUploadId ? `${window.location.protocol}//<YOUR_LAPTOP_IP>:3000/phone-upload/${phoneUploadId}` : '';
+    const qrCodeUrl = phoneUploadId ? `${window.location.protocol}//${window.location.hostname}:3000/phone-upload/${phoneUploadId}` : '';
     const potentialIpUrl = phoneUploadId ? `${window.location.protocol}//<YOUR_LAPTOP_IP>:3000/phone-upload/${phoneUploadId}` : '';
 
     return (
-        <div className="photo-upload-options">
+        <div style={{ marginBottom: '30px' }}>
             <h2>Upload Room Photos</h2>
-            <div className="photo-upload-options">
-                {/* Option 1: Local File Input */}
-                <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
-                    <label htmlFor="photo-upload">Option 1: Select Files From This Device (2-4 photos)</label>
-                    <br />
-                    <input
-                        style={{ marginTop: '5px', marginBottom: '10px' }}
-                        type="file"
-                        id="photo-upload"
-                        multiple
-                        accept="image/*"
-                        // capture="environment" // Keep this? Maybe confusing if also offering phone upload button
-                        onChange={handleFileChange}
-                        disabled={isLoading || showQrCode}
-                    />
-                    <br />
-                    {/* Button to submit either local files or completed phone upload */}
-                    <button
-                        type="submit"
-                        disabled={isLoading || (!selectedFiles && !(phoneUploadId && phoneUploadStatus === 'completed'))}
-                    >
-                        {isLoading ? 'Processing...' : 'Upload & Start Processing'}
-                    </button>
-                </form>
 
-                <hr />
+            {/* Option 1: Local File Input */}
+            <form onSubmit={handleSubmit} style={{ marginBottom: '20px' }}>
+                <label htmlFor="photo-upload">Option 1: Select Files From This Device (2-4 photos)</label>
+                <br />
+                <input
+                    style={{ marginTop: '5px', marginBottom: '10px' }}
+                    type="file"
+                    id="photo-upload"
+                    multiple
+                    accept="image/*"
+                    // capture="environment" // Keep this? Maybe confusing if also offering phone upload button
+                    onChange={handleFileChange}
+                    disabled={isLoading || showQrCode}
+                />
+                <br />
+                {/* Button to submit either local files or completed phone upload */}
+                <button
+                    type="submit"
+                    disabled={isLoading || (!selectedFiles && !(phoneUploadId && phoneUploadStatus === 'completed'))}
+                >
+                    {isLoading ? 'Processing...' : 'Upload & Start Processing'}
+                </button>
+            </form>
 
-                {/* Option 2: Phone Upload Trigger */}
-                <div style={{ marginTop: '20px' }}>
-                    <label>Option 2: Upload Photos From Your Phone</label>
-                    <br />
-                    <button
-                        type="button"
-                        onClick={handleStartPhoneUpload}
-                        disabled={isLoading || showQrCode}
-                        style={{ marginTop: '5px' }}
-                    >
-                        Generate Phone Upload Link (QR Code)
-                    </button>
-                </div>
+            <hr />
+
+            {/* Option 2: Phone Upload Trigger */}
+            <div style={{ marginTop: '20px' }}>
+                <label>Option 2: Upload Photos From Your Phone</label>
+                <br />
+                <button
+                    type="button"
+                    onClick={handleStartPhoneUpload}
+                    disabled={isLoading || showQrCode}
+                    style={{ marginTop: '5px' }}
+                >
+                    Generate Phone Upload Link (QR Code)
+                </button>
             </div>
 
             {/* QR Code Display Area */}
             {showQrCode && phoneUploadId && (
-                <div className="qr-code-area">
+                <div style={{ marginTop: '20px', padding: '20px', border: '1px solid #ccc', display: 'inline-block' }}>
                     <p>
                         Scan this QR code with your phone. Ensure your phone is on the <strong>same Wi-Fi network</strong> as this computer.
                         <br />
@@ -240,7 +239,7 @@ const PhotoUpload: React.FC<PhotoUploadProps> = ({ onUploadSuccess, onUploadErro
             )}
 
             {/* General Status Message Area */}
-            {message && <p className="status-message">{message}</p>}
+            {message && <p style={{ marginTop: '15px', fontWeight: 'bold' }}>{message}</p>}
         </div>
     );
 };

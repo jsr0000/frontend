@@ -89,7 +89,7 @@ function MainApp() {
         <h1>AI Interior Designer</h1>
       </header>
       <main>
-        {error && <p style={{ color: 'red' }}><strong>Error:</strong> {error}</p>}
+        {error && <p className="error-message"><strong>Error:</strong> {error}</p>}
 
         {appState === 'landing' && (
           <LandingPage onStartDesigning={handleStartDesigning} />

@@ -1,55 +1,234 @@
+/* === Global Reset & Font === */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8f9fa;
+  /* Very light grey background */
+  color: #212529;
+  /* Dark grey text */
+  line-height: 1.6;
+}
+
+/* === App Layout === */
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .App-header {
-  background-color: #282c34;
-  padding: 20px;
+  background-color: #343a40;
+  /* Darker grey header */
+  padding: 1.5rem 1rem;
   color: white;
-  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.App-header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  text-align: center;
 }
 
 main {
-  padding: 20px;
+  flex-grow: 1;
+  /* Takes up remaining vertical space */
+  padding: 2rem 1rem;
+  max-width: 960px;
+  width: 100%;
+  margin: 1.5rem auto;
+  /* Add some margin top/bottom */
+  box-sizing: border-box;
 }
 
-/* Add more specific styles for components as needed */
-label {
-  margin-right: 10px;
+h2 {
+  color: #495057;
+  /* Medium grey heading */
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
+/* === General Elements === */
+hr {
+  border: none;
+  border-top: 1px solid #dee2e6;
+  /* Light border */
+  margin: 2rem 0;
+}
+
+code {
+  background-color: #e9ecef;
+  /* Light background for code */
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 85%;
+  border-radius: 3px;
+  font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  word-break: break-word;
+}
+
+/* === Buttons === */
 button {
-  padding: 10px 15px;
-  margin-top: 10px;
+  display: inline-block;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: center;
+  vertical-align: middle;
   cursor: pointer;
+  user-select: none;
+  background-color: #007bff;
+  /* Primary blue */
+  border: 1px solid #007bff;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 0.5rem 0.25rem;
+  /* Consistent margin */
+}
+
+button:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
+}
+
+button:disabled {
+  color: #fff;
+  background-color: #6c757d;
+  /* Grey disabled */
+  border-color: #6c757d;
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+/* === Forms & Inputs === */
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
 }
 
 input[type="file"] {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: block;
+  width: calc(100% - 2rem);
+  /* Adjust width based on padding */
+  max-width: 400px;
+  /* Max width */
+  margin: 1rem auto;
+  /* Centering */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input[type="file"]::file-selector-button {
+  padding: 0.5rem 1rem;
+  margin: -0.5rem -1rem;
+  margin-inline-end: 1rem;
+  color: #ffffff;
+  background-color: #6c757d;
+  /* Secondary button color */
+  border: 1px solid #6c757d;
+  border-radius: 0.25rem 0 0 0.25rem;
+  transition: background-color .15s ease-in-out;
+  cursor: pointer;
+}
+
+input[type="file"]:hover::file-selector-button {
+  background-color: #5a6268;
+}
+
+/* === PhotoUpload Specific (Card-like) === */
+.photo-upload-options {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.photo-upload-options form,
+.photo-upload-options>div {
+  margin-bottom: 0;
+  /* Reset margin if direct children */
+}
+
+.qr-code-area {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid #dee2e6;
+  display: inline-block;
+  background-color: #f8f9fa;
+  /* Light background for QR area */
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+.qr-code-area p {
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.qr-code-area strong {
+  display: block;
+  margin: 0.5rem 0;
+  color: #dc3545;
+  /* Red emphasis */
+}
+
+/* === RoomVisualizer Container === */
+.visualizer-container {
+  height: 60vh;
+  min-height: 400px;
+  /* Ensure it doesn't collapse too much */
+  width: 100%;
+  background: #e9ecef;
+  /* Light grey background */
+  margin-top: 1.5rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.3rem;
+  position: relative;
+  overflow: hidden;
+  /* Ensure canvas doesn't overflow */
+}
+
+/* === Status/Error Messages === */
+.status-message {
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #495057;
+  text-align: center;
+}
+
+.error-message {
+  color: #721c24;
+  /* Darker red text */
+  background-color: #f8d7da;
+  /* Light red background */
+  border: 1px solid #f5c6cb;
+  /* Reddish border */
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.25rem;
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.error-message strong {
+  font-weight: bold;
 }

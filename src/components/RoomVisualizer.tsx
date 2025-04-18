@@ -199,7 +199,7 @@ const RoomVisualizer: React.FC<RoomVisualizerProps> = ({ projectId, placedItems,
     };
 
     return (
-        <div style={{ height: '60vh', width: '100%', background: '#f0f0f0', marginTop: '20px', border: '1px solid #ccc' }}>
+        <div className="visualizer-container">
             <Canvas shadows camera={{ position: [0, 3, 8], fov: 50 }}>
                 <Suspense fallback={<Html center>Loading...</Html>}>
                     {/* Added onClick handler to Stage for deselecting */}
